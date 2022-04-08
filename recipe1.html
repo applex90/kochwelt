@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="./styles/fonts/fonts.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./script.js"></script>
+    <title>Kochwelt</title>
+
+    <script>
+        //Define amount per ingridient
+        let ingridientsMenu1 = [0.25, 0.5, 125, 0.5, 50, 0.25, 0, 0.25, 31.25, 0];
+
+        //check if window load an calc inital amounts
+        window.addEventListener('load', (event) => {
+            calculateIngridientsOfMenu1();
+        });
+
+
+        function calculateIngridientsOfMenu1() {
+            let portionsNr = document.getElementById('calc-factor').value; //get value to multiply
+            let portions = portionsNr.replace(',', '.'); //replace "," with "."
+            //check if portions is not NaN and greater than 0
+            if (!isNaN(portions) && portions > 0) {
+                calcAllIngridients(portions);
+            }
+        }
+
+
+        function calcAllIngridients(portions) {
+            for (let i = 0; i < ingridientsMenu1.length; i++) {
+
+                let initalAmountMenu1 = ingridientsMenu1[i];
+                if (ingridientsMenu1[i] > 0) {
+                    let newAmount = portions * initalAmountMenu1;
+                    ingridientItemAmountToDecimal = newAmount.toFixed(2);
+                    let result = ingridientItemAmountToDecimal.replace(".", ",");
+                    document.getElementById(`amount${i}`).innerHTML = result;
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="includeHTML()">
+
+    <header w3-include-html="./templates/header.html"></header>
+
+    <div class="recipe">
+
+        <h1>Griechischer Bauernsalat</h1>
+
+        <img class="recipe-img" src="./img/salad.jpg" alt="salad-img">
+
+        <div class="recipe-hints">
+            <span>
+                <img src="./img/icons/clock-regular.svg" alt="Clock" />
+                15 Min.
+            </span>
+            <span>
+                <img src="./img/icons/brain-solid.svg" alt="brain" />
+                simpel
+            </span>
+            <span>
+                <img src="./img/icons/calendar-alt-regular.svg" alt="calender" />
+                03.04.2022
+            </span>
+
+        </div>
+
+        <div class="horizontal-border"></div>
+
+        <div class="calc-div">
+            <span>Zutaten für </span>
+            <input type="number" id="calc-factor" value="4" min="1" autofocus>
+            <div class="button-calc" onclick="calculateIngridientsOfMenu1()">Portionen</div>
+        </div>
+
+
+        <div class="recipe-data">
+            <table class="ingridients-table">
+                <tr>
+                    <td class="amount" id="amount0"></td>
+                    <td class="entity"></td>
+                    <td>Salatgurke(n)</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount1"></td>
+                    <td class="entity"></td>
+                    <td>Paprikaschote(n), rot und grün</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount2"></td>
+                    <td class="entity">g</td>
+                    <td>Tomate(n)</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount3"></td>
+                    <td class="entity"></td>
+                    <td>Zwiebel(n)</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount4"></td>
+                    <td class="entity">g</td>
+                    <td>Schafskäse</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount5"></td>
+                    <td class="entity">Glas</td>
+                    <td>Oliven, schwarze, 1 Glas ca. 100 g</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount6"></td>
+                    <td class="entity"></td>
+                    <td>Salz und Pfeffer</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount7"></td>
+                    <td class="entity"></td>
+                    <td>Zitrone(n)</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount8"></td>
+                    <td class="entity">ml</td>
+                    <td>Olivenöl</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount9"></td>
+                    <td class="entity"></td>
+                    <td>Oregano</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="recipe-manual">
+            <h2>Zubereitung</h2>
+
+            <div class="recipe-hints">
+                <span>
+                    <img src="./img/icons/clock-regular.svg" alt="Clock" />
+                    ca. 15 Min.
+                </span>
+                <span>
+                    <img src="./img/icons/clock-regular.svg" alt="Clock" />
+                    Gesamtzeit ca. 15 Minuten
+                </span>
+            </div>
+
+            <p>Gurke waschen und ungeschält in dünne Scheiben oder Stücke schneiden. Paprika waschen, entkernen und in
+                dünne Streifen schneiden. Tomaten waschen und achteln. Zwiebeln schälen und in feine Ringe schneiden.
+                Schafskäse
+                würfeln und mit Oregano bestreuen. Oliven abgießen und mit Gurke, Paprika, Tomaten, Zwiebeln und
+                Schafskäse
+                in eine Schüssel geben. Olivenöl, Zitronensaft, Salz und Pfeffer zu einer Sauce verrühren und über den
+                Salat
+                gießen. Umrühren.</p>
+
+        </div>
+
+        <div class="recipe-author">
+            <h3>Rezept erstellt von</h3>
+            <div class="author-info">
+                <img class="author-img" src="./img/alex.jpg" alt="author">
+                <span>Alex Bachmann</span>
+            </div>
+        </div>
+    </div>
+
+    <footer w3-include-html="./templates/footer.html"></footer>
+
+</body>
+
+</html>

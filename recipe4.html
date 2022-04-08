@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="./styles/fonts/fonts.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./script.js"></script>
+    <title>Kochwelt</title>
+
+    <script>
+        //Define amount per ingridient
+        let ingridientsMenu4 = [25, 1.25, 1.5, 0.25, 0.25, 0.25, 62.5, 125, 12.5, 1.5, 1, 0];
+
+        //check if window load an calc inital amounts
+        window.addEventListener('load', (event) => {
+            calculateIngridientsOfMenu4();
+        });
+
+
+        function calculateIngridientsOfMenu4() {
+            let portionsNr = document.getElementById('calc-factor').value; //get value to multiply
+            let portions = portionsNr.replace(',', '.'); //replace "," with "."
+            //check if portions is not NaN and greater than 0
+            if (!isNaN(portions) && portions > 0) {
+                calcAllIngridients(portions);
+            }
+        }
+
+
+        function calcAllIngridients(portions) {
+            for (let i = 0; i < ingridientsMenu4.length; i++) {
+
+                let initalAmountMenu4 = ingridientsMenu4[i];
+                if (ingridientsMenu4[i] > 0) {
+                    let newAmount = portions * initalAmountMenu4;
+                    ingridientItemAmountToDecimal = newAmount.toFixed(2);
+                    let result = ingridientItemAmountToDecimal.replace(".", ",");
+                    document.getElementById(`amount${i}`).innerHTML = result;
+                }
+            }
+        }
+    </script>
+</head>
+
+<body onload="includeHTML()">
+
+    <header w3-include-html="./templates/header.html"></header>
+
+    <div class="recipe">
+        <h1>Kaiserschmarrn - Tiroler Landgasthofrezept</h1>
+        <img class="recipe-img" src="img/kaiserschmarrn.jpg" alt="Kaiserschmarrn-img">
+
+        <div class="recipe-hints">
+            <span>
+                <img src="img/icons/clock-regular.svg" alt="Clock" />
+                15 Min.
+            </span>
+
+            <span>
+                <img src="img/icons/brain-solid.svg" alt="brain" />
+                normal
+            </span>
+
+            <span>
+                <img src="img/icons/calendar-alt-regular.svg" alt="calendar" />
+                04.04.2022
+            </span>
+        </div>
+
+        <div class="horizontal-border"></div>
+
+        <div class="calc-div">
+            <span>Zutaten für</span>
+            <input type="number" id="calc-factor" value="4" min="1" autofocus>
+            <div class="button-calc" onklick="calculateIngridientsOfMenu4()">Portionen</div>
+        </div>
+
+        <div class="recipe-data">
+            <table class="ingridients-table">
+                <tr>
+                    <td class="amount" id="amount0"></td>
+                    <td class="entity">g</td>
+                    <td>Rosinen</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount1"></td>
+                    <td class="entity">EL</td>
+                    <td>Rum, Cognac oder Wasser</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount2"></td>
+                    <td class="entity"></td>
+                    <td>Eigelb</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount3"></td>
+                    <td class="entity">Pck.</td>
+                    <td>Bourbon-Vanillezucker</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount4"></td>
+                    <td class="entity">EL</td>
+                    <td>Zucker</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount5"></td>
+                    <td class="entity">Prise(n)</td>
+                    <td>Salz</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount6"></td>
+                    <td class="entity">g</td>
+                    <td>Mehl</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount7"></td>
+                    <td class="entity">ml</td>
+                    <td>Milch</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount8"></td>
+                    <td class="entity">g</td>
+                    <td>Butter, zerlassen</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount9"></td>
+                    <td class="entity"></td>
+                    <td>Eiweiß</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount10"></td>
+                    <td class="entity">TL</td>
+                    <td>Puderzucker</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount11"></td>
+                    <td class="entity">n.B.</td>
+                    <td>Butter zum Braten, ca. 15-20g je Pfanne</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="recipe-manual">
+            <h2>Zubereitung</h2>
+
+            <div class="recipe-hints">
+                <span>
+                    <img src="img/icons/clock-regular.svg" alt="Clock" />
+                    Arbeitszeit ca. 15 Min.
+                </span>
+
+                <span>
+                    <img src="img/icons/clock-regular.svg" alt="Clock" />
+                    Ruhezeit ca. 30 Min.
+                </span>
+
+                <span>
+                    <img src="img/icons/clock-regular.svg" alt="Clock" />
+                    Koch-/Backzeit ca. 15 Min.
+                </span>
+
+                <span>
+                    <img src="img/icons/clock-regular.svg" alt="Clock" />
+                    Gesamtzeit ca. 1 Stunde
+                </span>
+            </div>
+            <p>
+                Dieses traditionelle Rezept stammt aus einem Tiroler Landgasthof und wird dort seit vielen Generationen
+                so zubereitet. Es enthält einige schöne Geheimnisse aus Omas Trickkiste, die nicht immer preisgegeben
+                werden. Auf jeden Fall nichts für Kalorienzähler.
+                Die Rosinen in 5 EL Rum mindestens eine halbe Stunde einlegen. Wer keinen Rum mag, nimmt Cognac. Kinder
+                und Antialkoholiker nehmen Wasser.
+                Das Eigelb mit dem Vanillezucker, einer Prise Salz und 1 geh. EL Zucker mit dem Handrührgerät schaumig
+                aufschlagen. Nach und nach abwechselnd jeweils einen Löffel Mehl und einen guten Schuss Milch einrühren,
+                bis alles aufgebraucht ist.
+                Anschließend die zerlassene Butter einrühren. (Kalorienzähler: das könnt ihr auch sein lassen und Euch
+                wundern, wieso das Zeug nicht so gut schmeckt, wie im Skiurlaub.) Der Teig wirkt ziemlich dünnflüssig,
+                das ist genau richtig so. Den Teig jetzt eine halbe Stunde ruhen lassen, danach nochmals gut
+                durchschlagen. Dann das Eiweiß zu einem festen Eischnee aufschlagen und mit einem Löffel langsam aber
+                gründlich unter die Teigmasse heben. Es sollten keine Eiweißflocken mehr zu sehen sein. Danach die
+                Rosinen ohne den Rum unterrühren.
+                In einer Pfanne Butter zerlassen und den Teig ca. 1 cm hoch eingießen. Hitze etwas reduzieren und
+                goldgelb anbacken lassen. Immer mal wieder drunter schauen. Die Masse vierteln, umdrehen und wieder
+                anbacken lassen. In mundgerechte Stücke teilen, mit 2 TL Zucker bestreuen und kurz karamellisieren
+                lassen.
+                Fast fertig: Auf Tellern anrichten und mit Puderzucker bestäuben.
+                Mit dem restlichen Teig genau so verfahren. Dabei vor jedem Eingießen in die Pfanne alles nochmals gut
+                verrühren, da die Rosinen schnell zu Boden sinken. Ergibt gute drei Pfannen voll Schmarrn und macht 4 -
+                6 Personen satt. Traditionell wird der Kaiserschmarrn mit Pflaumenkompott serviert.
+                Tipps:
+                Karamellisieren bringt's: in einer beschichteten Pfanne brennt auch nichts an. Einfach Zucker
+                drübergeben, wenden, eine halbe Minute warten, währenddessen auf die ungezuckerte Seite Zucker geben,
+                nochmals wenden, wieder eine halbe Minute warten, fertig.
+                Nicht süß genug? Statt mehr Zucker in den Teig zu geben, sollte man den gewünschten Süßegrad
+                anschließend mit Puderzucker erreichen. Zudem ist das Kompott meist auch recht süß und wer
+                karamellisiert hat, der braucht dem Teig nicht nachzuhelfen.
+                Warm halten: Klappt prima auf einem mit Backpapier ausgelegten Backblech oder in einer vorgewärmten
+                Auflaufform bei 80 °C im Ofen mit Ober-/Unterhitze, wenn man mal mehrere hungrige Mäuler zu stopfen hat.
+            </p>
+        </div>
+
+        <div class="recipe-author">
+            <h3>Rezept erstellt von</h3>
+            <div class="author-info">
+                <img class="author-img" src="img/profile.png" alt="author">
+                <span>Phillip Gastrock</span>
+            </div>
+        </div>
+
+    </div>
+
+    <footer w3-include-html="./templates/footer.html"></footer>
+
+</body>
+
+</html>

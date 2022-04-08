@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="./styles/fonts/fonts.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./script.js"></script>
+    <title>Kochwelt</title>
+
+    <script>
+        //Define amount per ingridient
+        let ingridientsMenu2 = [330, 150, 25, 10, 1, 1, 20, 4, 1, 1, 150, 0, 0];
+
+        //check if window load an calc inital amounts
+        window.addEventListener('load', (event) => {
+            calculateIngridientsOfMenu2();
+        });
+
+
+        function calculateIngridientsOfMenu2() {
+            let portionsNr = document.getElementById('calc-factor').value; //get value to multiply
+            let portions = portionsNr.replace(',', '.'); //replace "," with "."
+            //check if portions is not NaN and greater than 0
+            if (!isNaN(portions) && portions > 0) {
+                calcAllIngridients(portions);
+            }
+        }
+
+
+        function calcAllIngridients(portions) {
+            for (let i = 0; i < ingridientsMenu2.length; i++) {
+
+                let initalAmountMenu2 = ingridientsMenu2[i];
+                if (ingridientsMenu2[i] > 0) {
+                    let newAmount = portions * initalAmountMenu2;
+                    ingridientItemAmountToDecimal = newAmount.toFixed(2);
+                    let result = ingridientItemAmountToDecimal.replace(".", ",");
+                    document.getElementById(`amount${i}`).innerHTML = result;
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="includeHTML()">
+
+    <header w3-include-html="./templates/header.html"></header>
+
+    <div class="recipe">
+
+        <h1>Butter - Croissants</h1>
+
+        <img class="recipe-img" src="./img/croissant.jpg" alt="croissants-img">
+
+        <div class="recipe-hints">
+            <span>
+                <img src="./img/icons/clock-regular.svg" alt="Clock" />
+                90 Min.
+            </span>
+            <span>
+                <img src="./img/icons/brain-solid.svg" alt="brain" />
+                pfiffig
+            </span>
+            <span>
+                <img src="./img/icons/calendar-alt-regular.svg" alt="calender" />
+                03.04.2022
+            </span>
+
+        </div>
+
+        <div class="horizontal-border"></div>
+
+        <div class="calc-div">
+            <span>Zutaten für </span>
+            <input type="number" id="calc-factor" value="1" min="1" autofocus>
+            <div class="button-calc" onclick="calculateIngridientsOfMenu2()">Portionen</div>
+        </div>
+
+
+        <div class="recipe-data">
+            <table class="ingridients-table">
+                <tr>
+                    <td class="amount" id="amount0"></td>
+                    <td class="entity">g</td>
+                    <td>Mehl (Type 405 oder 550)</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount1"></td>
+                    <td class="entity">ml</td>
+                    <td>Milch</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount2"></td>
+                    <td class="entity">g</td>
+                    <td>Margarine</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount3"></td>
+                    <td class="entity">g</td>
+                    <td>Zucker</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount4"></td>
+                    <td class="entity"></td>
+                    <td>Ei</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount5"></td>
+                    <td class="entity"></td>
+                    <td>Eigelb</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount6"></td>
+                    <td class="entity">g</td>
+                    <td>Hefe</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount7"></td>
+                    <td class="entity">g</td>
+                    <td>Salz</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount8"></td>
+                    <td class="entity">TL</td>
+                    <td>Zitrone(n) - Schale, gerieben</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount9"></td>
+                    <td class="entity">Msp.</td>
+                    <td>Vanille</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount10"></td>
+                    <td class="entity">g</td>
+                    <td>Butter</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount11"></td>
+                    <td class="entity"></td>
+                    <td>Mehl für die Arbeitsfläche</td>
+                </tr>
+                <tr>
+                    <td class="amount" id="amount12"></td>
+                    <td class="entity"></td>
+                    <td>Wasser</td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="recipe-manual">
+            <h2>Zubereitung</h2>
+
+            <div class="recipe-hints">
+                <span>
+                    <img src="./img/icons/clock-regular.svg" alt="Clock" />
+                    Arbeitszeit ca. 1 Stunde 30 Minuten
+                </span>
+                <span>
+                    <img src="./img/icons/clock-regular.svg" alt="Clock" />
+                    Ruhezeit ca. 12 Stunden
+                </span>
+                <span>
+                    <img src="./img/icons/clock-regular.svg" alt="Clock" />
+                    Gesamtzeit ca. 13 Stunden 30 Minuten
+                </span>
+            </div>
+
+            <p>
+                Milch erwärmen, Zucker und Hefe unter Rühren darin auflösen. Hefemilch, Mehl, Salz, Eigelb, Ei,
+                Zitronenschale, Vanille und Margarine zu einem geschmeidigen Teig verarbeiten. Dann abgedeckt über Nacht
+                im Kühlschrank gehen lassen.<br><br>
+                Die Butter zwischen Klarsichtfolie ca. 30 x 15 cm ausrollen und kühlstellen.<br><br>
+                Den Hefeteig auf der bemehlten Arbeitsfläche kreuzförmig einschneiden. So ausrollen, dass ein Kreuz
+                entsteht. Die Butterplatte in die Mitte legen. Die Teigkanten mit etwas Wasser bestreichen. Die
+                Teiglappen über die Butterplatte legen, sodass
+                diese vollständig eingehüllt ist. Den Teig rundherum leicht andrücken und 15 Minuten kalt
+                stellen.<br><br>
+                Den Teigblock auf der bemehlten Arbeitsfläche auf etwa 50 x 30 cm ausrollen. Ein Teigdrittel zur Mitte
+                hin einschlagen, das andere Drittel darüberlegen. 20 Minuten kalt stellen.<br><br>
+                Ausrollen, Einschlagen und Kaltstellen einmal wiederholen (einfache Tour). Nun dem Teig noch eine
+                doppelte Tour geben, d.h. die rechte und die linke Teigkante bis zur Mitte hin einschlagen, sodass sie
+                in der Mitte aneinander stoßen. Nach dieser Tour sollte der Teig mindestens 30 Minuten im Kühlschrank
+                entspannen.<br><br>
+                Den Teig auf der bemehlten Arbeitsfläche auf ca. 60 x 20 cm ausrollen. Aus der Platte 8 gleichgroße
+                Dreiecke schneiden. An der Schmalseite in der Mitte jeweils 2 cm tief einschneiden, um die Hörnchen
+                besser biegen zu können.<br><br>
+                Die Dreiecke von der Schmalseite her zu Hörnchen aufrollen, dabei die Teigspitzen leicht andrücken. Auf
+                ein mit Backpapier belegtes Backblech setzen. Ca. 30 Minuten gehen lassen, nach 20 Minuten die
+                Croissants mit dem verquirlten Eigelb bestreichen.<br><br>
+                Im vorgeheizten Backofen auf der 2. Einschubleiste von unten bei 210 Grad 15-18 Minuten backen (Gas 3-4,
+                Umluft ca. 15 Minuten bei 190 Grad). Aus dem Ofen nehmen und leicht abkühlen lassen.
+            </p>
+
+        </div>
+
+        <div class="recipe-author">
+            <h3>Rezept erstellt von</h3>
+            <div class="author-info">
+                <img class="author-img" src="./img/alex.jpg" alt="author">
+                <span>Alex Bachmann</span>
+            </div>
+        </div>
+    </div>
+
+    <footer w3-include-html="./templates/footer.html"></footer>
+
+</body>
+
+</html>

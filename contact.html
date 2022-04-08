@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="./styles/fonts/fonts.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./script.js"></script>
+    <title>Kochwelt</title>
+</head>
+
+<body onload="init('nav2')">
+
+    <header w3-include-html="./templates/header.html"></header>
+
+    <div class="contact">
+        <h1>Kontakt</h1>
+        <form action="http://gruppe-206.developerakademie.net/kochwelt/send_mail/send_mail.php" method="POST">
+            <div class="contact-data">
+                <div class="form-name">
+                <label for="fname"><b>Name</b></label>
+                <input name="name" required>
+            </div>
+            <div class="form-mail">
+                <label for="email"><b>E-Mail</b></label>
+                <input type="email" name="email" required>
+            </div>
+            </div>
+            <div class="contact-message">
+                <label for="message"><b>Mitteilung</b></label><br>
+                <textarea name="message" placeholder="Deine Nachricht an uns"></textarea>
+            </div>
+            <button type="submit" class="button-contact">Mail senden</button>
+        </form>
+    </div>
+
+
+    <footer w3-include-html="./templates/footer.html"></footer>
+
+</body>
+
+</html>

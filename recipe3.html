@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="./styles/fonts/fonts.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./script.js"></script>
+    <title>Kochwelt</title>
+
+    <script>
+        //Define amount per ingridient
+        let ingridientsMenu3 = [0.25, 75, 50, 125, 31.25, 31.25, 1.25, 0.0625, 0.5, 0.5, 1.25, 0, 0.75, 0.25, 0, 31.25, 2, 0.25, 0, 0, 0, 0];
+
+        //check if window load an calc inital amounts
+        window.addEventListener('load', (event) => {
+            calculateIngridientsOfMenu3();
+        });
+
+
+        function calculateIngridientsOfMenu3() {
+            let portionsNr = document.getElementById('calc-factor').value; //get value to multiply
+            let portions = portionsNr.replace(',', '.'); //replace "," with "."
+            //check if portions is not NaN and greater than 0
+            if (!isNaN(portions) && portions > 0) {
+                calcAllIngridients(portions);
+            }
+        }
+
+
+        function calcAllIngridients(portions) {
+            for (let i = 0; i < ingridientsMenu3.length; i++) {
+
+                let initalAmountMenu3 = ingridientsMenu3[i];
+                if (ingridientsMenu3[i] > 0) {
+                    let newAmount = portions * initalAmountMenu3;
+                    ingridientItemAmountToDecimal = newAmount.toFixed(2);
+                    let result = ingridientItemAmountToDecimal.replace(".", ",");
+                    document.getElementById(`amount${i}`).innerHTML = result;
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="includeHTML()">
+
+    <header w3-include-html="./templates/header.html"></header>
+
+    <div class="recipe">
+        <h1>Lasagne</h1>
+        <img class="recipe-img" src="./img/lasagne.jpg" alt="Lasagne-img">
+
+        <div class="recipe-hints">
+            <span>
+                <img src="img/icons/clock-regular.svg" alt="Clock" />
+                2 Stunden
+            </span>
+            <span>
+                <img src="img/icons/brain-solid.svg" alt="brain" />
+                simpel
+            </span>
+            <span>
+                <img src="img/icons/calendar-alt-regular.svg" alt="calender" />
+                08.04.2022
+            </span>
+        </div>
+
+
+        <div class="horizontal-border"></div>
+
+        <div class="calc-div">
+            <span>Zutaten für</span>
+            <input type="number" id="calc-factor" value="4" min="1" autofocus>
+            <div class="button-calc" onclick="calculateIngridientsOfMenu3()">Portionen</div>
+        </div>
+
+        <div class="recipe-data">
+            <table class="ingridients-table">
+                <tr>
+                    <td class="amount" id="amount0"></td>
+                    <td class="entity">kg</td>
+                    <td>Lasagneplatten</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount1"></td>
+                    <td class="entity">g</td>
+                    <td>Gounda, gerieben</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount2"></td>
+                    <td class="entity">g</td>
+                    <td>Kochschinken, in Streifen geschnitten</td>
+                </tr>
+            </table>
+
+            <div>
+                <h3>Für die Sauce: (Bolognese)</h3>
+            </div>
+
+            <table class="ingridients-table">
+
+                <tr>
+                    <td class="amount" id="amount3"></td>
+                    <td class="entity">g</td>
+                    <td>Rinderhackfleisch</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount4"></td>
+                    <td class="entity">ml</td>
+                    <td>Rotwein</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount5"></td>
+                    <td class="entity">ml</td>
+                    <td>Olivenöl</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount6"></td>
+                    <td class="entity">kleine</td>
+                    <td>Möhren</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount7"></td>
+                    <td class="entity">Knolle(n)</td>
+                    <td>Sellerie, einige Blätter vom Grün zu Seite legen</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount8"></td>
+                    <td class="entity"></td>
+                    <td>Zwiebeln</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount9"></td>
+                    <td class="entity">Zehe(n)</td>
+                    <td>Knoblauch</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount10"></td>
+                    <td class="entity">Blätter</td>
+                    <td>Basilikum</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount11"></td>
+                    <td class="entity"></td>
+                    <td>etwas Petersilie</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount12"></td>
+                    <td class="entity">Pck.</td>
+                    <td>Tomate(n) passiert</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount13"></td>
+                    <td class="entity">Tube</td>
+                    <td>Tomatenmark</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount14"></td>
+                    <td class="entity"></td>
+                    <td>Salz und Pfeffer</td>
+                </tr>
+            </table>
+
+            <div>
+                <h3>Für die Sauce: (Béchamel)</h3>
+            </div>
+
+            <table class="ingridients-table">
+                <tr>
+                    <td class="amount" id="amount15"></td>
+                    <td class="entity">g</td>
+                    <td>Butter oder Margarine</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount16"></td>
+                    <td class="entity">EL</td>
+                    <td>Mehl</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount17"></td>
+                    <td class="entity">Liter</td>
+                    <td>Milch</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount18"></td>
+                    <td class="entity"></td>
+                    <td>etwas Muskat</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount19"></td>
+                    <td class="entity"></td>
+                    <td>etwas Salz</td>
+                </tr>
+
+                <tr>
+                    <td class="amount" id="amount20"></td>
+                    <td class="entity"></td>
+                    <td>etwas Zucker</td>
+                </tr>
+            </table>
+
+            <div>
+                <h3>Außerdem:</h3>
+            </div>
+
+            <table class="ingridients-table">
+                <td class="amount" id="amount21"></td>
+                <td class="entity"></td>
+                <td>Käse, gerieben</td>
+            </table>
+        </div>
+
+        <div class="recipe-manual">
+            <h2>Zubereitung</h2>
+
+            <div class="recipe-hints">
+                <span>
+                    <img src="img/icons/clock-regular.svg" alt="Clock" />
+                    ca. 1 Stunde
+                </span>
+                <span>
+                    <img src="img/icons/clock-regular.svg" alt="Clock" />
+                    Gesamtzeit ca. 2 Stunden
+                </span>
+            </div>
+
+            <p>
+                Möhren, Sellerie, Zwiebeln und Knoblauch schälen, Selleriegrün, Petersilie und Basilikum zufügen und in
+                einer Küchenmaschine ganz fein hacken.
+                In einem Topf das Olivenöl heiß werden lassen und das Hackfleisch so lange anbraten, bis man kein rohes
+                Fleisch mehr sieht. Nun das gemahlene Gemüse hinzufügen und ca. 15 Min. unter ständigen Wenden braten.
+                Mit
+                dem Rotwein ablöschen und weitere 10 Min. köcheln lassen. Die passierten Tomaten und das Tomatenmark
+                hinzufügen und mit Salz, Pfeffer und Zucker nach Geschmack würzen. Alles ca. 1 Stunde auf mittlerer
+                Hitze
+                kochen lassen.
+                In einem etwas höheren Topf die Butter (oder Margarine) zerlassen und das Mehl hinzufügen. Beide Zutaten
+                durch stetes Rühren miteinander gut verbinden. Unter ständigen Rühren mit dem Schneebesen nun die Milch
+                nach
+                und nach hinzufügen. Die Sauce Béchamel muss etwas zähflüssig sein. Den Topf von der Herdplatte nehmen
+                und
+                die Sauce mit Muskat und Salz abschmecken.
+                Die Nudelplatten in einem hohen Topf mit Wasser, Salz und ein Glas Pflanzenöl ca. 6 Min. kochen. Die
+                Teigplatten müssen einzeln in kochende Wasser geben werden, da sie sonst zusammen kleben. Nach der
+                Kochzeit
+                die Nudeln unter fließendem kaltem Wasser abkühlen lassen und in einem Nudelsieb abtropfen lassen.
+                Alternativ kann man auch Nudelplatten verwenden, die nicht vorher abgekocht werden müssen.
+                In eine Backform (am besten länglich oder oval) etwas Bolognesesauce füllen, dann eine Lage
+                Lasagneplatten
+                einschichten. Diese dünn mit Béchamelsauce bestreichen. Erneut Bolognesesauce darauf verteilen und diese
+                dann mit etwas von dem Schinken belegen.
+                Diese Reihenfolge so lange immer wiederholen, bis alle Teigplatten verbraucht sind.
+                Die letzte Schicht sollte aus Béchamelsauce, Bolognesesauce und dem geriebenen Käse bestehen.
+                Im vorgeheizten Backofen bei 200 °C ca. 40 Min. backen.
+                Der Käse sollte eine leichte goldgelbe Kruste bilden.
+            </p>
+
+        </div>
+
+        <div class="recipe-author">
+            <h3>Rezept erstellt von</h3>
+            <div class="author-info">
+                <img class="author-img" src="img/profile.png" alt="author">
+                <span>Phillip Gastrock</span>
+            </div>
+        </div>
+    </div>
+    <footer w3-include-html="./templates/footer.html"></footer>
+</body>
+
+</html>
