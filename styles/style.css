@@ -2,6 +2,9 @@ body {
     margin: 0;
     padding: 0px;
     font-family: 'Raleway';
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 * {
@@ -459,7 +462,7 @@ h1 {
 .contact {
     padding: 0px 24px 38px 24px;
     word-break: break-word;
-    height: 60vh;
+    flex: 1;
 }
 
 .contact form {
