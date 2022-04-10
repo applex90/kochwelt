@@ -8,7 +8,7 @@ let ingridientsArray = [ingridientsMenu1, ingridientsMenu2, ingridientsMenu3, in
 
 async function initRecipe(recipeId) {
   await includeHTML();
-  let menu = ingridientsArray[recipeId-1];
+  let menu = ingridientsArray[recipeId - 1];
   calculateIngridientsOf(menu);
 }
 
@@ -18,7 +18,7 @@ function calculateIngridientsOf(menu) {
   let portions = portionsNr.replace(',', '.'); //replace "," with "."
   //check if portions is not NaN and greater than 0
   if (!isNaN(portions) && portions > 0) {
-      calcAllIngridients(menu, portions);
+    calcAllIngridients(menu, portions);
   }
 }
 
@@ -27,16 +27,16 @@ function calcAllIngridients(menu, portions) {
 
 
   for (let i = 0; i < menu.length; i++) {
-      
+
     let initalAmountMenu = menu[i];
 
-      if (menu[i] > 0) {
-          let newAmount = portions * initalAmountMenu;
-          ingridientItemAmountToDecimal = newAmount.toFixed(2);
-          let result = ingridientItemAmountToDecimal.replace(".", ",");
-          document.getElementById(`amount${i}`).innerHTML = result;
-          
-      }
+    if (menu[i] > 0) {
+      let newAmount = portions * initalAmountMenu;
+      ingridientItemAmountToDecimal = newAmount.toFixed(2);
+      let result = ingridientItemAmountToDecimal.replace(".", ",");
+      document.getElementById(`amount${i}`).innerHTML = result;
+
+    }
   }
 }
 
@@ -162,6 +162,7 @@ function chooseRecipe(navElement, arraySelector, recipesOfWeek) {
     <div w3-include-html="./${recipesOfWeek[arraySelector]}.html"></div>
     `;
     init('nav1');
+    renderIngrientsCalc(arraySelector, recipesOfWeek);
   }
 
 }
@@ -214,5 +215,15 @@ function previewRecipe4() {
     <a href="dayrecipe.html"><button class="button-open">Rezept öffnen</button></a>
   </div>
 `;
+}
+
+
+function renderIngrientsCalc(arraySelector, recipesOfWeek) {
+  let calcInterval = setInterval(() => {
+    if (document.getElementById('calc-factor')) {
+      initRecipe(recipesOfWeek[arraySelector].charAt(recipesOfWeek.length-1));
+      clearInterval(calcInterval);
+    }
+  }, 10);
 }
 
