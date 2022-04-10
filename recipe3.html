@@ -12,43 +12,9 @@
     <script src="./script.js"></script>
     <title>Kochwelt</title>
 
-    <script>
-        //Define amount per ingridient
-        let ingridientsMenu3 = [0.25, 75, 50, 125, 31.25, 31.25, 1.25, 0.0625, 0.5, 0.5, 1.25, 0, 0.75, 0.25, 0, 31.25, 2, 0.25, 0, 0, 0, 0];
-
-        //check if window load an calc inital amounts
-        window.addEventListener('load', (event) => {
-            calculateIngridientsOfMenu3();
-        });
-
-
-        function calculateIngridientsOfMenu3() {
-            let portionsNr = document.getElementById('calc-factor').value; //get value to multiply
-            let portions = portionsNr.replace(',', '.'); //replace "," with "."
-            //check if portions is not NaN and greater than 0
-            if (!isNaN(portions) && portions > 0) {
-                calcAllIngridients(portions);
-            }
-        }
-
-
-        function calcAllIngridients(portions) {
-            for (let i = 0; i < ingridientsMenu3.length; i++) {
-
-                let initalAmountMenu3 = ingridientsMenu3[i];
-                if (ingridientsMenu3[i] > 0) {
-                    let newAmount = portions * initalAmountMenu3;
-                    ingridientItemAmountToDecimal = newAmount.toFixed(2);
-                    let result = ingridientItemAmountToDecimal.replace(".", ",");
-                    document.getElementById(`amount${i}`).innerHTML = result;
-                }
-            }
-        }
-    </script>
-
 </head>
 
-<body onload="includeHTML()">
+<body onload="initRecipe(3)">
 
     <header w3-include-html="./templates/header.html"></header>
 
@@ -77,7 +43,7 @@
         <div class="calc-div">
             <span>Zutaten für</span>
             <input type="number" id="calc-factor" value="4" min="1" autofocus>
-            <div class="button-calc" onclick="calculateIngridientsOfMenu3()">Portionen</div>
+            <div class="button-calc" onclick="calculateIngridientsOf(ingridientsMenu3)">Portionen</div>
         </div>
 
         <div class="recipe-data">

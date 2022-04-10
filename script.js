@@ -1,4 +1,45 @@
 let saveNav = ""; //Save navpoint for mobile Nav-highlighting
+let ingridientsMenu1 = [0.25, 0.5, 125, 0.5, 50, 0.25, 0, 0.25, 31.25, 0];
+let ingridientsMenu2 = [330, 150, 25, 10, 1, 1, 20, 4, 1, 1, 150, 0, 0];
+let ingridientsMenu3 = [0.25, 75, 50, 125, 31.25, 31.25, 1.25, 0.0625, 0.5, 0.5, 1.25, 0, 0.75, 0.25, 0, 31.25, 2, 0.25, 0, 0, 0, 0];
+let ingridientsMenu4 = [25, 1.25, 1.5, 0.25, 0.25, 0.25, 62.5, 125, 12.5, 1.5, 1, 0];
+let ingridientsArray = [ingridientsMenu1, ingridientsMenu2, ingridientsMenu3, ingridientsMenu4];
+
+
+async function initRecipe(recipeId) {
+  await includeHTML();
+  let menu = ingridientsArray[recipeId-1];
+  calculateIngridientsOf(menu);
+}
+
+
+function calculateIngridientsOf(menu) {
+  let portionsNr = document.getElementById('calc-factor').value; //get value to multiply
+  let portions = portionsNr.replace(',', '.'); //replace "," with "."
+  //check if portions is not NaN and greater than 0
+  if (!isNaN(portions) && portions > 0) {
+      calcAllIngridients(menu, portions);
+  }
+}
+
+
+function calcAllIngridients(menu, portions) {
+
+
+  for (let i = 0; i < menu.length; i++) {
+      
+    let initalAmountMenu = menu[i];
+
+      if (menu[i] > 0) {
+          let newAmount = portions * initalAmountMenu;
+          ingridientItemAmountToDecimal = newAmount.toFixed(2);
+          let result = ingridientItemAmountToDecimal.replace(".", ",");
+          document.getElementById(`amount${i}`).innerHTML = result;
+          
+      }
+  }
+}
+
 
 function init(navElement) {
   saveNav = navElement;
@@ -86,11 +127,11 @@ function highlightNav(navElement) {
 
 
 function randomRecipe(navElement) {
-  //Array of week Monday to Sunday
+  //Array of week Sunday = 0 to Saturday = 6
   let recipesOfWeek = ["recipe1", "recipe2", "recipe3", "recipe4", "recipe1", "recipe2", "recipe3"];
   let date = new Date();
   let day = date.getDay();
-  let arraySelector = day - 1;
+  let arraySelector = day;
 
   chooseRecipe(navElement, arraySelector, recipesOfWeek);
 }
