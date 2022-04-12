@@ -50,7 +50,8 @@ function init(navElement) {
       highlightNav(navElement);
       clearInterval(awaitIncludeNav);
     }
-  }, 10);
+    console.log("w");
+  }, 20);
 
   if (navElement == "nav0") {
     let awaitIncludeRandomRecipe = setInterval(() => {
@@ -58,7 +59,7 @@ function init(navElement) {
         randomRecipe(navElement);
         clearInterval(awaitIncludeRandomRecipe);
       }
-    }, 10);
+    }, 20);
   }
 }
 
