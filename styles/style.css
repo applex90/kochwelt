@@ -25,10 +25,10 @@ h1 {
     height: 126px;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     box-shadow: 0px 2px 6px 0px rgb(0, 0, 0, 0.2);
-    padding-right: 24px;
-    padding-left: 24px;
+    padding-right: 38px;
+    padding-left: 38px;
     padding-top: 24px;
     background-color: white;
     margin-bottom: 38px;
@@ -154,7 +154,7 @@ h1 {
 
 .recipe-of-day-content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 18px;
 }
 
@@ -194,26 +194,25 @@ h1 {
 .suggestion-recipes {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #efefef;
-    padding-top: 38px;
-    padding-bottom: 38px;
+    padding: 38px;
     overflow-x: hidden;
 }
 
 .suggestion-content {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     gap: 68px;
-    animation: marquee 60s linear infinite;
+    /* animation: marquee 60s linear infinite; */
 }
 
-.suggestion-content:hover {
+/* .suggestion-content:hover {
     animation-play-state: paused
-}
+} */
 
-@keyframes marquee {
+/* @keyframes marquee {
     0% {
         transform: translateX(20%);
     }
@@ -225,7 +224,7 @@ h1 {
     100% {
         transform: translateX(20%);
     }
-}
+} */
 
 .suggestion-content a {
     display: flex;
@@ -250,7 +249,7 @@ h1 {
 
 .recipe-info-content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap-reverse;
     gap: 18px;
@@ -522,7 +521,7 @@ h1 {
 
 /* footer */
 .footer {
-    padding: 24px;
+    padding: 38px;
 }
 
 .bg-footer {

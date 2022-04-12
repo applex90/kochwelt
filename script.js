@@ -50,7 +50,6 @@ function init(navElement) {
       highlightNav(navElement);
       clearInterval(awaitIncludeNav);
     }
-    console.log("w");
   }, 20);
 
   if (navElement == "nav0") {
@@ -162,7 +161,7 @@ function chooseRecipe(navElement, arraySelector, recipesOfWeek) {
     document.getElementById('recipe-include').innerHTML = `
     <div w3-include-html="./${recipesOfWeek[arraySelector]}.html"></div>
     `;
-    init('nav1');
+    init('nav1'); 
     renderIngrientsCalc(arraySelector, recipesOfWeek);
   }
 
