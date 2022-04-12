@@ -225,6 +225,6 @@ function renderIngrientsCalc(arraySelector, recipesOfWeek) {
       initRecipe(recipesOfWeek[arraySelector].charAt(recipesOfWeek.length-1));
       clearInterval(calcInterval);
     }
-  }, 10);
+  }, 20);
 }
 
